@@ -1,0 +1,25 @@
+on place:
+	player does not have permission "member.place" or "member.*":
+		message "&cYou can't place blocks in the server." to the player
+		cancel event
+
+on break:
+	player does not have permission "member.break" or "member.*":
+		message "&cYou can't break blocks in the server." to the player
+		cancel event
+
+on rightclick on a chest or a furnace or a hopper or a dropper or a dispenser or a brewing stand or a beacon:
+	player does not have permission "member.interact" or "member.*":
+		message "&cYou can't interact with the world." to the player
+		cancel event
+
+on damage:
+	attacker is a player:
+		attacker does not have permission "member.interact" or "member.*":
+			message "&cYou can't interact with the world." to the attacker
+			cancel event
+
+on target: # To make the above statement fair; mobs shouldn't be able to attack the player either.
+	target is a player:
+		player does not have permission "member.interact" or "member.*":
+			cancel event
